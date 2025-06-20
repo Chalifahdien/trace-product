@@ -24,3 +24,9 @@ module.exports = {
 // > const ProductTrace = await ethers.getContractFactory("ProductTrace")
 // undefined
 // > const contract = await ProductTrace.attach("0x5FbDB2315678afecb367f032d93F642f64180aa3")
+
+
+
+// npm install
+// npm install --save-dev hardhat @nomicfoundation/hardhat-toolbox
+
