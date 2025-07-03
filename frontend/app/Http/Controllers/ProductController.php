@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Services\BlockchainService;
 use Illuminate\Support\Facades\Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -60,7 +61,12 @@ class ProductController extends Controller
 
         // Buat URL tujuan QR code
         $qrUrl = url("/product/detail/" . $product->id); // full URL, misalnya http://localhost:8000/product/detail/5
+        $qrPath = public_path('storage/qrcodes');
 
+        // Cek jika folder belum ada, maka buat
+        if (!File::exists($qrPath)) {
+            File::makeDirectory($qrPath, 0755, true);
+        }
         // Generate QR code yang mengarah ke URL
         QrCode::format('png')
             ->size(200)
